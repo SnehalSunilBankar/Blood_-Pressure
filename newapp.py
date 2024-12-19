@@ -3,6 +3,8 @@ import pickle
 import numpy as np
 
 try:
+    import sklearn
+    import pickle
     model = pickle.load(open('classifyModel.pkl', 'rb'))
 except FileNotFoundError:
     st.error("Error: 'classifyModel.pkl' not found. Please ensure the file is uploaded in the correct directory.")
