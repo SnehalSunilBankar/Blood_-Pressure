@@ -2,9 +2,12 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Load the saved Random Forest model
-model = pickle.load(open('classifyModel.pkl', 'rb'))
-
+try:
+    model = pickle.load(open('classifyModel.pkl', 'rb'))
+except FileNotFoundError:
+    st.error("Error: 'classifyModel.pkl' not found. Please ensure the file is uploaded in the correct directory.")
+except Exception as e:
+    st.error(f"An error occurred while loading the model: {e}")
 # Streamlit app with custom HTML and CSS
 st.markdown("""
     <style>
